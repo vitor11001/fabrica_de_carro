@@ -324,18 +324,71 @@ class Esteira(Mecanica, Seguranca, Acessorios):
         
         Acessorios.write_headlight_led(self, farol_led)
         
+        if self.consumo != 'Diesel':
+            while True:
+                escolha = str(input('O carro terá farol de milha?[y/n]')).upper()
+                if escolha == 'Y':
+                    farol_milha = True
+                    break
+                elif escolha == 'N':
+                    farol_milha = False
+                    break
+                else:
+                    print('\nEscolha uma opção valida!\n')
+                    
+        else:
+            farol_milha = True
+                
+        Acessorios.write_headlight_milha(self, farol_milha)
+        
         while True:
-            escolha = str(input('O carro terá farol de milha?[y/n]')).upper()
+            escolha = str(input('O carro terá fechamento de mala?[y/n]')).upper()
             if escolha == 'Y':
-                farol_milha = True
+                fechamento_mala = True
                 break
             elif escolha == 'N':
-                farol_milha = False
+                fechamento_mala = False
                 break
             else:
                 print('\nEscolha uma opção valida!\n')
                 
-        Acessorios.write_headlight_milha(self, farol_milha)
+        Acessorios.write_close_suitcase(self, fechamento_mala)
+        
+        if self.consumo != 'Elétrico':        
+            while True:
+                escolha = str(input('O carro terá sensor de calibragem de pneus?[y/n]')).upper()
+                if escolha == 'Y':
+                    sensor_calibragem_pneus = True
+                    break
+                elif escolha == 'N':
+                    sensor_calibragem_pneus = False
+                    break
+                else:
+                    print('\nEscolha uma opção valida!\n')
+        
+        else:
+            sensor_calibragem_pneus = True
+                
+        Acessorios.write_s_calibration_tire(self, sensor_calibragem_pneus)
+        
+        Acessorios.write_air_conditioner(self, ar_condicionado)
+        
+        if self.consumo != 'Elétrico':
+            while True:
+                escolha = str(input('O carro terá painel digital?[y/n]')).upper()
+                if escolha == 'Y':
+                    painel_digital = True
+                    break
+                elif escolha == 'N':
+                    painel_digital = False
+                    break
+                else:
+                    print('\nEscolha uma opção valida!\n')
+                    
+        else:
+            painel_digital = True
+                
+        Acessorios.write_digital_panel(self, painel_digital)
 
 
 ##############################################################################################################################################

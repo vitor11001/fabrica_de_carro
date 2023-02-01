@@ -10,28 +10,28 @@ class Acessorios:
         self.painel_digital = bool()
         
     
-    def write_camera_re(self, camera_re) -> None:
+    def write_camera_re(self, camera_re: bool) -> None:
         self.camera_re = camera_re
         
-    def write_camera_3d(self, camera_3d) -> None:
+    def write_camera_3d(self, camera_3d: bool) -> None:
         self.camera_3d = camera_3d
     
-    def write_headlight_led(self, farol_led) -> None:
+    def write_headlight_led(self, farol_led: bool) -> None:
         self.farol_led = farol_led
         
-    def write_headlight_milha(self, farol_milha) -> None:
+    def write_headlight_milha(self, farol_milha: bool) -> None:
         self.farol_milha = farol_milha
         
-    def write_close_suitcase(self, fechamento_mala) -> None:
+    def write_close_suitcase(self, fechamento_mala: bool) -> None:
         self.fechamento_mala = fechamento_mala
         
-    def write_s_calibration_tire(self, sensor_calibragem_pneus) -> None:
+    def write_s_calibration_tire(self, sensor_calibragem_pneus: bool) -> None:
         self.sensor_calibragem_pneus = sensor_calibragem_pneus
         
-    def write_air_conditioner(self, ar_condicionado) -> None:
+    def write_air_conditioner(self, ar_condicionado: bool) -> None:
         self.ar_condicionado = ar_condicionado
         
-    def write_digital_panel(self, painel_digital) -> None:
+    def write_digital_panel(self, painel_digital: bool) -> None:
         self.painel_digital = painel_digital
         
     def read_camera_re(self) -> bool:
