@@ -58,5 +58,6 @@ class Mecanica:
         return f'Presença do turbo: {self.turbo}'
     
     def read_all_mechanics(self) -> dict:
-        dicio = {'consumo': self.consumo, 'cambio': self.cambio, 'qtd_marchas': self.qtd_marchas, 'tipo_injecao': self.tipo_injecao, 'amortecedor': self.amortecedor, 'radiador_tubular': self.radiador_tubular, 'freios_abs': self.freios_abs, 'turbo': self.turbo}
+        dicio = {'consumo': self.consumo, 'cambio': self.cambio, 'qtd_marchas': self.qtd_marchas, 'tipo_injecao': self.tipo_injecao,
+                 'amortecedor': self.amortecedor, 'radiador_tubular': self.radiador_tubular, 'freios_abs': self.freios_abs, 'turbo': self.turbo}
         return dicio
