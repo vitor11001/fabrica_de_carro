@@ -34,28 +34,28 @@ class Mecanica:
         self.turbo = turbo
     
     def read_consup(self) -> str:
-        return f'O consumo do carro é {self.consumo}'
+        return self.consumo
     
     def read_exchange(self) -> str:
-        return f'O cambio do carro é {self.cambio}'
+        return self.cambio
     
-    def read_amount_gears(self) -> str:
-        return f'O numero de marchas é {self.qtd_marchas}'
+    def read_amount_gears(self) -> int:
+        return self.qtd_marchas
     
     def read_type_injection(self) -> str:
-        return f'O tipo da injeção é {self.tipo_injecao}'
+        return self.tipo_injecao
     
     def read_absorver(self) -> str:
-        return f'O tipo do amortecedor é {self.amortecedor}'
+        return self.amortecedor
     
-    def read_tub_radiator(self) -> str:
-        return f'Presença do radiador tubular: {self.radiador_tubular}'
+    def read_tub_radiator(self) -> bool:
+        return self.radiador_tubular
     
-    def read_brakes_abs(self) -> str:
-        return f'Presença do freio ABS: {self.freios_abs}'
+    def read_brakes_abs(self) -> bool:
+        return self.freios_abs
     
-    def read_turbo(self) -> str:
-        return f'Presença do turbo: {self.turbo}'
+    def read_turbo(self) -> bool:
+        return self.turbo
     
     def read_all_mechanics(self) -> dict:
         dicio = {'consumo': self.consumo, 'cambio': self.cambio, 'qtd_marchas': self.qtd_marchas, 'tipo_injecao': self.tipo_injecao,
