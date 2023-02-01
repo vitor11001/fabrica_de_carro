@@ -432,23 +432,6 @@ def main():
     onix = Esteira('onix')
 
     onix.start()
-
-    #print('-'*100)
-
-    #for key, values in onix.read_all_mechanics().items():
-    #    print(f'{key}: {values}')
-        
-    #print('-'*100)
-
-    #for key, values in onix.read_all_security().items():
-    #    print(f'{key}: {values}')
-        
-    #print('-'*100)
-
-    #for key, values in onix.read_all_accessorys().items():
-    #    print(f'{key}: {values}')
-        
-    #print('-'*100)
     
 if __name__ == '__main__':
     main()
