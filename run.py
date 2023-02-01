@@ -7,7 +7,14 @@ class Esteira(Mecanica, Seguranca, Acessorios):
     def __init__(self, modelo):
         self.modelo = modelo
 
+
     def start(self):
+        self.mechanics()
+        self.security()
+        self.accessorys()
+        
+        
+    def mechanics(self):
         consumo = str()
         talvez_consumo_tb = str()
         cambio = str()
@@ -193,10 +200,118 @@ class Esteira(Mecanica, Seguranca, Acessorios):
         Mecanica.write_turbo(self, turbo)
 
 
+    def security(self):
+        vidros_reforcados = bool()
+        cintos_3_pontas = bool()
+        airbag = bool()
+        controle_estabilidade = bool()
+        sensor_fadiga = bool()
+        sensor_frenagem = bool()
+        sensor_p_cego = bool()
+        
+        while True:
+            escolha = str(input('O carro terá vidros reforcados?[y/n]')).upper()
+            if escolha == 'Y':
+                vidros_reforcados = True
+                break
+            elif escolha == 'N':
+                vidros_reforcados = False
+                break
+            else:
+                print('\nEscolha uma opção valida!\n')
+    
+        Seguranca.write_glass_reforced(self, vidros_reforcados)
+        
+        while True:
+            escolha = str(input('O carro terá cintos 3 pontas?[y/n]')).upper()
+            if escolha == 'Y':
+                cintos_3_pontas = True
+                break
+            elif escolha == 'N':
+                cintos_3_pontas = False
+                break
+            else:
+                print('\nEscolha uma opção valida!\n')
+    
+        Seguranca.write_3_point_belt(self, cintos_3_pontas)
+        
+        while True:
+            escolha = str(input('O carro terá airbag?[y/n]')).upper()
+            if escolha == 'Y':
+                airbag = True
+                break
+            elif escolha == 'N':
+                airbag = False
+                break
+            else:
+                print('\nEscolha uma opção valida!\n')
+    
+        Seguranca.write_airbag(self, airbag)
+        
+        while True:
+            escolha = str(input('O carro terá vidros reforcados?[y/n]')).upper()
+            if escolha == 'Y':
+                controle_estabilidade = True
+                break
+            elif escolha == 'N':
+                controle_estabilidade = False
+                break
+            else:
+                print('\nEscolha uma opção valida!\n')
+    
+        Seguranca.write_stability_control(self, controle_estabilidade)
+    
+        while True:
+            escolha = str(input('O carro terá sensor de fadiga?[y/n]')).upper()
+            if escolha == 'Y':
+                sensor_fadiga = True
+                break
+            elif escolha == 'N':
+                sensor_fadiga = False
+                break
+            else:
+                print('\nEscolha uma opção valida!\n')
+    
+        Seguranca.write_s_fadigue(self, sensor_fadiga)
+        
+        while True:
+            escolha = str(input('O carro terá sensor de frenagem?[y/n]')).upper()
+            if escolha == 'Y':
+                sensor_frenagem = True
+                break
+            elif escolha == 'N':
+                sensor_frenagem = False
+                break
+            else:
+                print('\nEscolha uma opção valida!\n')
+    
+        Seguranca.write_s_braking(self, sensor_frenagem)
+        
+        while True:
+            escolha = str(input('O carro terá sensor de ponto cego?[y/n]')).upper()
+            if escolha == 'Y':
+                sensor_p_cego = True
+                break
+            elif escolha == 'N':
+                sensor_p_cego = False
+                break
+            else:
+                print('\nEscolha uma opção valida!\n')
+    
+        Seguranca.write_s_blind_spot(self, sensor_p_cego)
+    
+    def accessorys(self):
+        pass
+
+
 ##############################################################################################################################################
 
 onix = Esteira('onix')
 
 onix.start()
 
-print(onix.read_all_mechanics())
+for key, values in onix.read_all_mechanics().items():
+    print(f'{key}: {values}')
+
+for key, values in onix.read_all_security().items():
+    print(f'{key}: {values}')
