@@ -202,62 +202,48 @@ class Esteira(Mecanica, Seguranca, Acessorios):
 
     def security(self):
         vidros_reforcados = bool()
-        cintos_3_pontas = bool()
-        airbag = bool()
+        cintos_3_pontas = True
+        airbag = True
         controle_estabilidade = bool()
         sensor_fadiga = bool()
         sensor_frenagem = bool()
         sensor_p_cego = bool()
         
-        while True:
-            escolha = str(input('O carro terá vidros reforcados?[y/n]')).upper()
-            if escolha == 'Y':
-                vidros_reforcados = True
-                break
-            elif escolha == 'N':
-                vidros_reforcados = False
-                break
-            else:
-                print('\nEscolha uma opção valida!\n')
-    
+        if self.consumo != 'Gasolina':
+            while True:
+                escolha = str(input('O carro terá vidros reforcados?[y/n]')).upper()
+                if escolha == 'Y':
+                    vidros_reforcados = True
+                    break
+                elif escolha == 'N':
+                    vidros_reforcados = False
+                    break
+                else:
+                    print('\nEscolha uma opção valida!\n')
+                    
+        else:
+            vidros_reforcados = False
+            
         Seguranca.write_glass_reforced(self, vidros_reforcados)
         
-        while True:
-            escolha = str(input('O carro terá cintos 3 pontas?[y/n]')).upper()
-            if escolha == 'Y':
-                cintos_3_pontas = True
-                break
-            elif escolha == 'N':
-                cintos_3_pontas = False
-                break
-            else:
-                print('\nEscolha uma opção valida!\n')
-    
         Seguranca.write_3_point_belt(self, cintos_3_pontas)
         
-        while True:
-            escolha = str(input('O carro terá airbag?[y/n]')).upper()
-            if escolha == 'Y':
-                airbag = True
-                break
-            elif escolha == 'N':
-                airbag = False
-                break
-            else:
-                print('\nEscolha uma opção valida!\n')
-    
         Seguranca.write_airbag(self, airbag)
         
-        while True:
-            escolha = str(input('O carro terá vidros reforcados?[y/n]')).upper()
-            if escolha == 'Y':
-                controle_estabilidade = True
-                break
-            elif escolha == 'N':
-                controle_estabilidade = False
-                break
-            else:
-                print('\nEscolha uma opção valida!\n')
+        if self.consumo != 'Diesel':
+            while True:
+                escolha = str(input('O carro terá controle de estabilidade?[y/n]')).upper()
+                if escolha == 'Y':
+                    controle_estabilidade = True
+                    break
+                elif escolha == 'N':
+                    controle_estabilidade = False
+                    break
+                else:
+                    print('\nEscolha uma opção valida!\n')
+                    
+        else:
+            controle_estabilidade = False
     
         Seguranca.write_stability_control(self, controle_estabilidade)
     
