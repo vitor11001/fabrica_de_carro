@@ -29,26 +29,26 @@ class Seguranca:
     def write_s_blind_spot(self, sensor_p_cego: bool) -> None:
         self.sensor_p_cego = sensor_p_cego
         
-    def read_glass_reforced(self) -> str:
-        return str(self.vidros_reforcados)
+    def read_glass_reforced(self) -> bool:
+        return self.vidros_reforcados
     
-    def read_3_point_belt(self) -> str:
-        return str(self.cintos_3_pontas)
+    def read_3_point_belt(self) -> bool:
+        return self.cintos_3_pontas
     
-    def read_airbag(self) -> str:
-        return str(self.airbag)
+    def read_airbag(self) -> bool:
+        return self.airbag
     
-    def read_stability_control(self) -> str:
-        return str(self.controle_estabilidade)
+    def read_stability_control(self) -> bool:
+        return self.controle_estabilidade
     
-    def read_s_fadigue(self) -> str:
-        return str(self.sensor_fadiga)
+    def read_s_fadigue(self) -> bool:
+        return self.sensor_fadiga
     
-    def read_s_braking(self) -> str:
-        return str(self.sensor_frenagem)
+    def read_s_braking(self) -> bool:
+        return self.sensor_frenagem
     
-    def read_s_blind_spot(self) -> str:
-        return str(self.sensor_p_cego)
+    def read_s_blind_spot(self) -> bool:
+        return self.sensor_p_cego
     
     def read_all_security(self) -> dict:
         dicio = {'Vidros Reforcados': self.vidros_reforcados, 'Cintos 3 Pontas': self.cintos_3_pontas, 'airbag': self.airbag, 'Controle Estabilidade': self.controle_estabilidade,

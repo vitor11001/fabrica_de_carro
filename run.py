@@ -287,7 +287,55 @@ class Esteira(Mecanica, Seguranca, Acessorios):
         Seguranca.write_s_blind_spot(self, sensor_p_cego)
     
     def accessorys(self):
-        pass
+        camera_re = bool()
+        camera_3d = bool()
+        farol_led = True
+        farol_milha = bool()
+        fechamento_mala = bool()
+        sensor_calibragem_pneus = bool()
+        ar_condicionado = True
+        painel_digital = bool()
+        
+        while True:
+            escolha = str(input('O carro terá camera traseira?[y/n]')).upper()
+            if escolha == 'Y':
+                camera_re = True
+                break
+            elif escolha == 'N':
+                camera_re = False
+                break
+            else:
+                print('\nEscolha uma opção valida!\n')
+                
+        Acessorios.write_camera_re(self, camera_re)
+        
+        while True:
+            escolha = str(input('O carro terá camera 3d?[y/n]')).upper()
+            if escolha == 'Y':
+                camera_3d = True
+                break
+            elif escolha == 'N':
+                camera_3d = False
+                break
+            else:
+                print('\nEscolha uma opção valida!\n')
+                
+        Acessorios.write_camera_3d(self, camera_3d)
+        
+        Acessorios.write_headlight_led(self, farol_led)
+        
+        while True:
+            escolha = str(input('O carro terá farol de milha?[y/n]')).upper()
+            if escolha == 'Y':
+                farol_milha = True
+                break
+            elif escolha == 'N':
+                farol_milha = False
+                break
+            else:
+                print('\nEscolha uma opção valida!\n')
+                
+        Acessorios.write_headlight_milha(self, farol_milha)
 
 
 ##############################################################################################################################################
