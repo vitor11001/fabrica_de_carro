@@ -18,11 +18,11 @@ class Esteira(Mecanica, Seguranca, Acessorios):
         consumo = str()
         talvez_consumo_tb = str()
         cambio = str()
-        qtd_marchas = int()
-        tipo_injecao = str()
-        amortecedor = str()
+        qtd_marchas = 6
+        tipo_injecao = 'eletrônica'
+        amortecedor = 'reforçados'
         radiador_tubular = bool()
-        freios_abs = bool()
+        freios_abs = True
         turbo = bool()
         
         while True:
@@ -88,66 +88,9 @@ class Esteira(Mecanica, Seguranca, Acessorios):
                 
         Mecanica.write_exchange(self, cambio)
         
-        while True:
-            print('''Escolha a Qtd de marcha: 
-                  1 - 5 marchas
-                  2 - 6 marchas
-                  ''')
-            
-            escolha = str(input('Sua escolha: '))
-            
-            if escolha == '1':
-                qtd_marchas = 5
-                break
-                
-            elif escolha == '2':
-                qtd_marchas = 6
-                break
-            
-            else:
-                print('\nEscolha uma opção valida!\n')
-        
         Mecanica.write_amount_gears(self, qtd_marchas)
-        
-        while True:
-            print('''Escolha o Tipo de injeção:
-                  1 - Eletrônica 
-                  2 - Convencional
-                  ''')
-            
-            escolha = str(input('Sua escolha: '))
-            
-            if escolha == '1':
-                tipo_injecao = 'eletrônica'
-                break
-                
-            elif escolha == '2':
-                tipo_injecao = 'convencional'
-                break
-            
-            else:
-                print('\nEscolha uma opção valida!\n')
                 
         Mecanica.write_type_injection(self, tipo_injecao)
-        
-        while True:
-            print('''Escolha o tipo de Amortecedores:
-                  1 - reforçados
-                  2 - comum
-                  ''')
-            
-            escolha = str(input('Sua escolha: '))
-            
-            if escolha == '1':
-                amortecedor = 'reforçados'
-                break
-                
-            elif escolha == '2':
-                amortecedor = 'comum'
-                break
-            
-            else:
-                print('\nEscolha uma opção valida!\n')
                 
         Mecanica.write_absorver(self, amortecedor)
                 
@@ -166,20 +109,6 @@ class Esteira(Mecanica, Seguranca, Acessorios):
                 print('\nEscolha uma opção valida!\n')
                 
         Mecanica.write_tub_radiator(self, radiador_tubular)
-        
-        while True:
-            escolha = str(input('O carro possui Freios ABS?[y/n] ')).upper()
-            
-            if escolha == 'Y':
-                freios_abs = True
-                break
-                
-            elif escolha == 'N':
-                freios_abs = False
-                break
-            
-            else:
-                print('\nEscolha uma opção valida!\n')
                 
         Mecanica.write_brakes_abs(self, freios_abs)
         
@@ -397,8 +326,19 @@ onix = Esteira('onix')
 
 onix.start()
 
+print('-'*100)
+
 for key, values in onix.read_all_mechanics().items():
     print(f'{key}: {values}')
+    
+print('-'*100)
 
 for key, values in onix.read_all_security().items():
     print(f'{key}: {values}')
+    
+print('-'*100)
+
+for key, values in onix.read_all_accessorys().items():
+    print(f'{key}: {values}')
+    
+print('-'*100)
