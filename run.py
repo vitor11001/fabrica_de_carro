@@ -4,17 +4,44 @@ from acessorios import Acessorios
         
 class Esteira(Mecanica, Seguranca, Acessorios):
     
-    def __init__(self, modelo):
+    modo_sport = bool()
+    tracao_4x4 = bool()
+    rotacao_independ_pneus = bool()
+    torque_inst = bool()
+    reducao_consumo = bool()
+    
+    
+    def __init__(self, modelo: str) -> None:
         self.modelo = modelo
 
 
-    def start(self):
+    def start(self) -> None:
         self.mechanics()
         self.security()
         self.accessorys()
         
+        self.write_mode_sport()
+        self.write_traction_4x4()
+        self.write_rotation_indep_tire()
+        self.write_torque_inst()
+        self.write_reduc_consumption()
         
-    def mechanics(self):
+        print('-'*100)
+        for key, values in self.read_all_mechanics().items():
+            print(f'{key}: {values}')
+        print('-'*100)
+        for key, values in self.read_all_security().items():
+            print(f'{key}: {values}')
+        print('-'*100)
+        for key, values in self.read_all_accessorys().items():
+            print(f'{key}: {values}')
+        print('-'*100)
+        for key, values in self.read_all_methods().items():
+            print(f'{key}: {values}')
+        print('-'*100)
+        
+        
+    def mechanics(self) -> None:
         consumo = str()
         talvez_consumo_tb = str()
         cambio = str()
@@ -129,7 +156,7 @@ class Esteira(Mecanica, Seguranca, Acessorios):
         Mecanica.write_turbo(self, turbo)
 
 
-    def security(self):
+    def security(self) -> None:
         vidros_reforcados = bool()
         cintos_3_pontas = True
         airbag = True
@@ -215,7 +242,8 @@ class Esteira(Mecanica, Seguranca, Acessorios):
     
         Seguranca.write_s_blind_spot(self, sensor_p_cego)
     
-    def accessorys(self):
+    
+    def accessorys(self) -> None:
         camera_re = bool()
         camera_3d = bool()
         farol_led = True
@@ -320,25 +348,107 @@ class Esteira(Mecanica, Seguranca, Acessorios):
         Acessorios.write_digital_panel(self, painel_digital)
 
 
+    @classmethod
+    def write_mode_sport(cls) -> None:
+        cls.modo_sport = True
+        
+        
+    @classmethod
+    def write_traction_4x4(cls) -> None:
+        if cls.read_consup != 'Diesel':
+            while True:
+                escolha = str(input('O carro terá tração 4x4?[y/n] ')).upper()
+                if escolha == 'Y':
+                    cls.tracao_4x4 = True
+                    break
+                elif escolha == 'N':
+                    cls.tracao_4x4 = False
+                    break
+                else:
+                    print('\nEscolha uma opção valida!\n')
+        else:
+            cls.tracao_4x4 = True
+    
+    
+    @classmethod
+    def write_rotation_indep_tire(cls) -> None:
+        if cls.read_consup != 'Diesel':
+            while True:
+                escolha = str(input('O carro terá rotação independe nos pneus?[y/n] ')).upper()
+                if escolha == 'Y':
+                    cls.rotacao_independ_pneus = True
+                    break
+                elif escolha == 'N':
+                    cls.rotacao_independ_pneus = False
+                    break
+                else:
+                    print('\nEscolha uma opção valida!\n')
+        else:
+            cls.rotacao_independ_pneus = True
+        
+        
+    @classmethod
+    def write_torque_inst(cls) -> None:
+        if cls.read_consup != 'Elétrico':
+            while True:
+                escolha = str(input('O carro terá torque instantaneo?[y/n] ')).upper()
+                if escolha == 'Y':
+                    cls.torque_inst = True
+                    break
+                elif escolha == 'N':
+                    cls.torque_inst = False
+                    break
+                else:
+                    print('\nEscolha uma opção valida!\n')
+        else:        
+            cls.torque_inst = True
+        
+        
+    @classmethod
+    def write_reduc_consumption(cls) -> None:
+        while True:
+            escolha = str(input('O carro terá redução de consumo?[y/n] ')).upper()
+            if escolha == 'Y':
+                cls.reducao_consumo = True
+                break
+            elif escolha == 'N':
+                cls.reducao_consumo = False
+                break
+            else:
+                print('\nEscolha uma opção valida!\n')
+                
+                
+    @classmethod
+    def read_all_methods(cls) -> dict:
+        dicio = {'modo_sport': cls.modo_sport, 'tracao_4x4': cls.tracao_4x4, 'rotacao_independ_pneus': cls.rotacao_independ_pneus, 
+                 'torque_inst': cls.torque_inst, 'reducao_consumo': cls.reducao_consumo}
+        return dicio
+
+
 ##############################################################################################################################################
 
-onix = Esteira('onix')
+def main():
 
-onix.start()
+    onix = Esteira('onix')
 
-print('-'*100)
+    onix.start()
 
-for key, values in onix.read_all_mechanics().items():
-    print(f'{key}: {values}')
+    #print('-'*100)
+
+    #for key, values in onix.read_all_mechanics().items():
+    #    print(f'{key}: {values}')
+        
+    #print('-'*100)
+
+    #for key, values in onix.read_all_security().items():
+    #    print(f'{key}: {values}')
+        
+    #print('-'*100)
+
+    #for key, values in onix.read_all_accessorys().items():
+    #    print(f'{key}: {values}')
+        
+    #print('-'*100)
     
-print('-'*100)
-
-for key, values in onix.read_all_security().items():
-    print(f'{key}: {values}')
-    
-print('-'*100)
-
-for key, values in onix.read_all_accessorys().items():
-    print(f'{key}: {values}')
-    
-print('-'*100)
+if __name__ == '__main__':
+    main()
